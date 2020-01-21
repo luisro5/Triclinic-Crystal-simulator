@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>triclinic cell</title>
+	<style>
+        canvas {
+            background-color: black;
+        }
+    </style>
+</head>
+<body bgcolor=#00cc00>
+<br/>
+<br/>
+<tt><h3>Luis Roberto Azaar Meza</h3></tt>
+<br/>
+<br/>
+<tt><h1>Triclinic cell (NOTE: allow pop-ups to open)</h1></tt>
+<br/>
+<p>This program calculate the coordinates of the triclinic cell of the crystal, based on the parameters
+a,b,c as sides of the crystal and the angles (alpha, Beta, and Gamma) of the cell. The output  are the coordinates of each vertex of the crystal.</p>
+<br/>
+<tt><h3>parameters of the primitive cell:</h3></tt>
+<br/>
+<br/>
+<table border="2">
+<tr>
+<td>side a: <input type="text" id="aa"></td>
+<td>angle Alpha(not radians): <input type="text" id="alfas"></td>
+</tr>
+<tr>
+<td>side b: <input type="text" id="bb"></td>
+<td>angle Beta(not radians): <input type="text" id="betas"></td>
+</tr>
+<tr>
+<td>side c: <input type="text" id="cc"></td>
+<td>angle Gamma(not radians): <input type="text" id="gammas"></td>
+</tr>
+</table>
+<br>
+<br>
+<tt><h3>cell vectors:</h3></tt>
+<table border="2">
+<tr>
+<td>A=(a*sin(beta))+(b*sin(alfa)*cos(gamma))</td>
+</tr>
+<tr>
+<td>B=b*sin(alfa)*sin(gamma)</td>
+</tr>
+<tr>
+<td>C=(a*cos(beta))+(b*cos(alfa))+c</td>
+</tr>
+</table>
+<br/>
+<br/>
+<center><tt><h3>Coordinates x, y ,z so: 0 &#60; n &#60; 40</h3></tt></center>
+<br/>
+<br/>
+<table border="2">
+<tr>
+<td>X</td>
+<td>Y</td>
+<td>Z</td>
+</tr>
+<script>
+function positionTri()
+{
+	var a;
+	var b;
+	var c;
+	var alpha;
+	var beta;
+	var gamma;
+	var i1;
+	var i2;
+	var i3;
+	var A;
+	var B;
+	var C;
+	var x1;
+	var y1;
+	var z1;
+	var trackX;
+	var trackY;
+	var trackZ;
+	aSub=parseFloat(document.getElementById('aa').value);
+	bSub=parseFloat(document.getElementById('bb').value);
+	cSub=parseFloat(document.getElementById('cc').value);
+	alfaSub=parseFloat(document.getElementById('alfas').value);
+	betaSub=parseFloat(document.getElementById('betas').value);
+	gammaSub=parseFloat(document.getElementById('gammas').value);
+	a=aSub;
+	b=bSub;
+	c=cSub;
+	alpha=(alfaSub*Math.PI)/180;
+	beta=(betaSub*Math.PI)/180;
+	gamma=(gammaSub*Math.PI)/180;
+	A=(a*Math.sin(beta))+(b*Math.sin(alpha)*Math.cos(gamma));
+	B=(b*Math.sin(alpha)*Math.sin(gamma));
+	C=(a*Math.cos(beta))+(b*Math.cos(alpha))+c;
+	document.write("<table><tr><td>X</td><td>Y</td><td>Z</td></tr>");
+	trackX=0;
+	trackY=0;
+	trackZ=0;
+	for(i1=0;i1<4;i1++)
+	{
+		for(i2=0;i2<4;i2++)
+		{
+			for(i3=0;i3<4;i3++)
+			{
+				x1=(i1*A);
+				y1=(i2*B);
+				z1=(i3*C);
+				document.write("<tr>"+"<td>["+x1+",</td>"+"<td>"+y1+",</td>"+"<td>"+z1+"]</td>"+"</tr>");
+				trackX=x1;
+				trackY=y1;
+				trackZ=z1;
+			}
+		}
+	}
+	var destiny="visualPrimitiveCell.html?alphasW="+trackX+"&betasW="+trackY+"&gammasW="+trackZ;
+	window.open(destiny, "Primitive", "width=1024,height=768");
+}
+</script>
+</table>
+<br />
+<button onclick="positionTri()">Calculate</button>
+<br />
+<p id="demo"></p>
+</body>
+</html>
