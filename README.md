@@ -6,6 +6,11 @@
 ## Documentation
 
 Triclinic Crystal simulator is a program that show you the coordinate of the atomic positions of the elemental crystal systems. 
+>Control Panel
+![](https://github.com/luisro5/Triclinic-Crystal-simulator/tricli2.png)
+>3D View
+![](https://github.com/luisro5/Triclinic-Crystal-simulator/tricli3.png)
+
 
 
 ### Running locally
