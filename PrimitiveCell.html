@@ -18,15 +18,37 @@
 	<meta charset="utf-8">
 	<title>triclinic cell</title>
 	<style>
+
+body {
+  background-color: lightgrey;
+  color: blue;
+}
+
+th,h1,h3 {
+  background-color: #3CD0D1;
+  color: black;
+}
+.button {
+ background-color: #3CD0D1; /* Green */
+ border: none;
+ /*
+ color: black;
+ padding: 15px 32px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ font-size: 16px;
+ */
+}
         canvas {
             background-color: black;
         }
     </style>
 </head>
-<body bgcolor=#00cc00>
+<body>
 <br/>
 <br/>
-<tt><h3>Luis Roberto Azaar Meza</h3></tt>
+<tt><h3>Author: Luis Roberto Azaar Meza</h3></tt>
 <br/>
 <br/>
 <tt><h1>Triclinic cell (NOTE: allow pop-ups to open)</h1></tt>
@@ -34,35 +56,45 @@
 <p>This program calculate the coordinates of the triclinic cell of the crystal, based on the parameters
 a,b,c as sides of the crystal and the angles (alpha, Beta, and Gamma) of the cell. The output  are the coordinates of each vertex of the crystal.</p>
 <br/>
+<br>
+<tt><h3>Example: Nacl (Common Salt)</h3></tt>
+<table border="2">
+	<tr>
+		<th>Cell vectors defined by:</th>
+		<th>NaCl cell parameters(nanometers nm):</th>
+		<th>NaCl angles parameters(°):</th>
+	</tr>
+<tr>
+<td>A=(a*sin(beta))+(b*sin(alfa)*cos(gamma))</td>
+<td>a=0.56402</td>
+<td>&alpha;=90</td>
+</tr>
+<tr>
+<td>B=b*sin(alfa)*sin(gamma)</td>
+<td>b=0.56402</td>
+<td>&beta;=90</td>
+</tr>
+<tr>
+<td>C=(a*cos(beta))+(b*cos(alfa))+c</td>
+<td>c=0.56402</td>
+<td>&gamma;=90</td>
+</tr>
+</table>
 <tt><h3>parameters of the primitive cell:</h3></tt>
 <br/>
 <br/>
 <table border="2">
 <tr>
 <td>side a: <input type="text" id="aa"></td>
-<td>angle Alpha(not radians): <input type="text" id="alfas"></td>
+<td>angle Alpha &alpha; (°): <input type="text" id="alfas"></td>
 </tr>
 <tr>
 <td>side b: <input type="text" id="bb"></td>
-<td>angle Beta(not radians): <input type="text" id="betas"></td>
+<td>angle Beta &beta; (°): <input type="text" id="betas"></td>
 </tr>
 <tr>
 <td>side c: <input type="text" id="cc"></td>
-<td>angle Gamma(not radians): <input type="text" id="gammas"></td>
-</tr>
-</table>
-<br>
-<br>
-<tt><h3>cell vectors:</h3></tt>
-<table border="2">
-<tr>
-<td>A=(a*sin(beta))+(b*sin(alfa)*cos(gamma))</td>
-</tr>
-<tr>
-<td>B=b*sin(alfa)*sin(gamma)</td>
-</tr>
-<tr>
-<td>C=(a*cos(beta))+(b*cos(alfa))+c</td>
+<td>angle Gamma &gamma; (°): <input type="text" id="gammas"></td>
 </tr>
 </table>
 <br/>
@@ -138,7 +170,7 @@ function positionTri()
 </script>
 </table>
 <br />
-<button onclick="positionTri()">Calculate</button>
+		<p align="center"><button onclick="positionTri()"><h1>Calculate</h1></button></p>
 <br />
 <p id="demo"></p>
 </body>
